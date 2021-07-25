@@ -59,6 +59,18 @@ namespace RegexUsingLamda
             {
                 Console.WriteLine($"{mobileNumber} Is Not Valid");
             }
+
+            Console.Write("\nEnter Password : ");
+            string password = Console.ReadLine();
+
+            if (RegexValidation.ValidatingPassword(password))
+            {
+                Console.WriteLine($"{password} Is Valid");
+            }
+            else
+            {
+                Console.WriteLine($"{password} Is Not Valid");
+            }
             Console.ReadLine();
         }
     }
