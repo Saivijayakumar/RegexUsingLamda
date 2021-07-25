@@ -47,6 +47,18 @@ namespace RegexUsingLamda
             {
                 Console.WriteLine($"{email} Is Not Valid");
             }
+
+            Console.Write("\nEnter Mobile Number : ");
+            string mobileNumber = Console.ReadLine();
+
+            if (RegexValidation.ValidatingMobileNumber(mobileNumber))
+            {
+                Console.WriteLine($"{mobileNumber} Is Valid");
+            }
+            else
+            {
+                Console.WriteLine($"{mobileNumber} Is Not Valid");
+            }
             Console.ReadLine();
         }
     }
