@@ -12,7 +12,7 @@ namespace RegexUsingLamda
         {
             Console.WriteLine("\t\tWelcome to Regex Problems");
 
-            Console.Write("\n Enter First Name : ");
+            Console.Write("\nEnter First Name : ");
             string firstName = Convert.ToString(Console.ReadLine());
 
             if (RegexValidation.ValidatingFirstName(firstName))
@@ -22,6 +22,18 @@ namespace RegexUsingLamda
             else
             {
                 Console.WriteLine($"{firstName} Is Not Valid");
+            }
+
+            Console.Write("\nEnter Last Name : ");
+            string lastName = Convert.ToString(Console.ReadLine());
+
+            if (RegexValidation.ValidatingLastName(lastName))
+            {
+                Console.WriteLine($"{lastName} Is Valid");
+            }
+            else
+            {
+                Console.WriteLine($"{lastName} Is Not Valid");
             }
             Console.ReadLine();
         }
