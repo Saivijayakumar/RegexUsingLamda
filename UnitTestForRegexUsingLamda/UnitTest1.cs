@@ -20,14 +20,20 @@ namespace UnitTestForRegexUsingLamda
         }
         [TestMethod]
         [TestCategory("FirstName")]
-        public void FistNameValidationReturnFalse()
+        public void FistNameValidationReturnCustomException()
         {
-            //Arrange
-            string firstName = "sai";
-            //Act
-            bool result = RegexValidation.ValidatingFirstName(firstName);
-            //Assert
-            Assert.IsFalse(result);
+            try
+            {
+                //Arrange
+                string firstName = "sai";
+                //Act
+                bool result = RegexValidation.ValidatingFirstName(firstName);
+            }
+            catch(InvalidCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Invalid First Name", ex.Message);
+            }
         }
         [TestMethod]
         [TestCategory("LastName")]
@@ -42,14 +48,20 @@ namespace UnitTestForRegexUsingLamda
         }
         [TestMethod]
         [TestCategory("LastName")]
-        public void LastNameValidationReturnFalse()
+        public void LastNameValidationReturnCustomException()
         {
-            //Arrange
-            string lastName = "kumar";
-            //Act
-            bool result = RegexValidation.ValidatingLastName(lastName);
-            //Assert
-            Assert.IsFalse(result);
+            try
+            {
+                //Arrange
+                string lastName = "kumar";
+                //Act
+                bool result = RegexValidation.ValidatingLastName(lastName);
+            }
+            catch(InvalidCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Invalid Last Name", ex.Message);
+            }
         }
         [TestMethod]
         [TestCategory("Email")]
@@ -64,14 +76,20 @@ namespace UnitTestForRegexUsingLamda
         }
         [TestMethod]
         [TestCategory("Email")]
-        public void EmailIdValidationReturnFalse()
+        public void EmailIdValidationReturnCustomException()
         {
-            //Arrange
-            string email = "abc@gmail.com.1a";
-            //Act
-            bool result = RegexValidation.ValidatingEmail(email);
-            //Assert
-            Assert.IsFalse(result);
+            try
+            {
+                //Arrange
+                string email = "abc@gmail.com.1a";
+                //Act
+                bool result = RegexValidation.ValidatingEmail(email);
+            }
+            catch(InvalidCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Invalid Email", ex.Message);
+            }
         }
         [TestMethod]
         [TestCategory("MobileNumber")]
@@ -86,14 +104,20 @@ namespace UnitTestForRegexUsingLamda
         }
         [TestMethod]
         [TestCategory("MobileNumber")]
-        public void MobileNumberValidationReturnFalse()
+        public void MobileNumberValidationReturnCustomValidation()
         {
-            //Arrange
-            string mobileNumber = "91 70958212634";
-            //Act
-            bool result = RegexValidation.ValidatingMobileNumber(mobileNumber);
-            //Assert
-            Assert.IsFalse(result);
+            try
+            {
+                //Arrange
+                string mobileNumber = "91 70958212634";
+                //Act
+                bool result = RegexValidation.ValidatingMobileNumber(mobileNumber);
+            }
+            catch(InvalidCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Invalid Mobile Number", ex.Message);
+            }
         }
         [TestMethod]
         [TestCategory("Password")]
@@ -108,14 +132,20 @@ namespace UnitTestForRegexUsingLamda
         }
         [TestMethod]
         [TestCategory("Password")]
-        public void PasswordValidationReturnFalse()
+        public void PasswordValidationReturnCustomValidation()
         {
-            //Arrange
-            string password = "Bran*raf";
-            //Act
-            bool result = RegexValidation.ValidatingPassword(password);
-            //Assert
-            Assert.IsFalse(result);
+            try
+            {
+                //Arrange
+                string password = "Bran*raf";
+                //Act
+                bool result = RegexValidation.ValidatingPassword(password);
+            }
+            catch(InvalidCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Invalid Password", ex.Message);
+            }
         }
         [TestMethod]
         [TestCategory("Parameterised Testing")]
@@ -127,15 +157,6 @@ namespace UnitTestForRegexUsingLamda
         {
             Assert.IsTrue(RegexValidation.ValidatingEmail(email));
         }
-        [TestMethod]
-        [TestCategory("Parameterised Testing")]
-        [DataRow("abc@gmail.com.aa.au")]
-        [DataRow("abc@gmail.com.1a")]
-        [DataRow("abc@abc@gmail.com")]
-        [DataRow("abc.@gmail.com")]
-        public void MultipleEmailIdValidationReturnFalse(string email)
-        {
-            Assert.IsFalse(RegexValidation.ValidatingEmail(email));
-        }
+        
     }
 }
