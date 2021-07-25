@@ -117,5 +117,25 @@ namespace UnitTestForRegexUsingLamda
             //Assert
             Assert.IsFalse(result);
         }
+        [TestMethod]
+        [TestCategory("Parameterised Testing")]
+        [DataRow("abc@gmail.com")]
+        [DataRow("abc-100@yahoo.com")]
+        [DataRow("abc.100@yahoo.com")]
+        [DataRow("abc.100@abc.com.au")]
+        public void MultipleEmailIdValidationReturnTrue(string email)
+        {
+            Assert.IsTrue(RegexValidation.ValidatingEmail(email));
+        }
+        [TestMethod]
+        [TestCategory("Parameterised Testing")]
+        [DataRow("abc@gmail.com.aa.au")]
+        [DataRow("abc@gmail.com.1a")]
+        [DataRow("abc@abc@gmail.com")]
+        [DataRow("abc.@gmail.com")]
+        public void MultipleEmailIdValidationReturnFalse(string email)
+        {
+            Assert.IsFalse(RegexValidation.ValidatingEmail(email));
+        }
     }
 }
